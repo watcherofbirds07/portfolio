@@ -1,0 +1,197 @@
+/*Hello! I am almost *certain* I have some redudant closing brackets in here somewhere, but I can't for the life of me find them.*/
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+.noto-serif-<uniquifier> {
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration-color: #9E856B;
+}
+h3{
+	color: #9E856B;
+}
+.resumemain{
+	max-width: 500px;
+}
+.logo{
+	display: block;
+	margin: 0 auto;
+}
+.fa{
+	font-size: 2em;
+	padding-top: 2px;
+	color: #E8D9BF;
+}
+}
+body{
+	font-family: "Newsreader", sans-serif;
+	margin: 0;
+}
+header{
+	color: orange;
+	background-color: white;
+	text-align: center;
+}
+canvas{
+	background-image: url(images/avenue.jpg);
+	margin-top: 0;
+margin-left: auto;
+margin-bottom: 0;
+margin-right: auto;
+border-radius: 10px;
+}
+.mepicture{
+	background-image: url(images/colten.jpg);
+}
+
+.aboutme{
+	border-bottom: 3px solid #9E856B;
+	color: #9E856B;
+}
+.titleresume{
+	color: lightblue;
+}
+.maintext{
+	color: #9E856B;
+}
+
+.maintext ul{
+	color: #9E856B;
+}
+
+.maintext li{
+	color: #9E856B;
+}
+.maintext h2{
+	color: #9E856B;
+}
+.maintitle{
+	padding: 5px;
+	padding-bottom: 5px;
+}
+
+.itsme{
+	float: right;
+}
+.resume{
+	color: orange;
+}
+a{
+	text-decoration-color: #C4A484;
+}
+
+.logo{
+	max-width: 275px;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+	padding: 20px;
+}
+.home-hero{
+	background-image: url('file:///C:/Users/lsche/OneDrive/Documents/websites/groove-guitars/images/images/guitars.jpg');
+	height: 400px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.home-hero h1{
+	text-align: center;
+	color: #FF00FE;
+	margin: 0;
+	text-shadow: 2px 2px 2px black;
+	padding: 10px;
+	background-color: rgba(0,0,0.5);
+}
+table{
+  border-collapse: collapse;
+}
+
+td, tr{
+  border: 1px solid blue;
+  padding:5px;
+}
+th{
+  color: white;
+  background-color: blue;
+}
+input[type=text],
+
+input [type=email], input[type=tell]
+
+background-color: #eeeeee;
+
+input[type=submit]{
+
+background-color: darkred; color: white;
+
+}
+nav{
+	background-color: #C4A484;
+	border-top: 2px solid #C4A484;
+	border-bottom: 2px solid #C4A484;
+	padding: 5px;
+	text-align: center;
+}
+nav a{
+	text-decoration: none;
+}
+nav a:link{
+	color: #E8D9BF;
+}
+nav a:visited{
+	color: #E8D9BF;
+}
+nav a:hover{
+	color: #E8D9BF;
+}
+nav a:active{
+	color: #E8D9BF;
+	text-decoration-color: #E8D9BF;
+}
+
+main{
+	max-width: 1000px;
+	margin: 20px auto;
+	padding: 10px;
+	background-color: #E8D9BF;
+	border-radius: 5px;
+}
+body{
+	background-color: #C4A484;
+}
+
+footer{
+	border-top: black 3px solid;
+	text-align: center;
+	background-color: #E8D9BF;
+	text-decoration-color: none;
+	color: #9E856B;
+}
+
+footer .fa{
+	color: #9E856B;
+
+}
+/*CSS without a media query--applies to all sizes unless overridden*/
+h1{
+		font-size: 4em;
+ }
+/* CSS Adjustments for Tablets */
+@media only screen and (max-width: 1024px) {
+	h1{
+		font-size: 1.8em;
+}
+}
+/* CSS Adjustments for Smartphones */
+@media only screen and (max-width: 768px) {
+	h1{
+		font-size: 1.5em;
+	}
+}

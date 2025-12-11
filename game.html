@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <meta name="Colten Carlson's Portfolio" content="This is a portfolio showcasing the skills and qualifications of PSEO student Colten Carlson with an emphasis on web development.">
+  <title>Colten Carlson</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><img class="logo" src="images/guitar.png" height="200" width="171" alt="guitar logo"></header>
+    <nav>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-3"> <i class="fa fa-home" aria-hidden="true"></i> </div>
+          <div class="col-sm-3"> <i class="fa fa-music" aria-hidden="true"></i></div>
+          <div class="col-sm-3"> <i class="fa fa-gamepad" aria-hidden="true"></i> </div>
+          <div class="col-sm-3"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3"> <a href="index.html"></i>Home</a> </div>
+          <div class="col-sm-3"> <a href="music.html">My Music</a> </div>
+          <div class="col-sm-3"> <a href="game.html">Game</a> </div>
+          <div class="col-sm-3"> <a href="resume-current.html">Resume</a></div>
+        </div>
+      </div>
+  </nav>
+  <img src="images/appmount.png" width="100%" height="200px" class="float-right">
+  <main>
+    <div class="maintext"><h2>JavaScript Flappy Bird Game</h2>
+    <p>I made this game with the help of a tutorial from W3 Schools! I made a couple changes by adding a background image, changing the color of the game piece, changing the color of the obstacles, and changing the color of the score keeper. Use the "accelerate" button to propel yourself upward!</p></div>
+  <body onload="startGame()">
+   <!-- This code will go into the <main> section. This div holds the game and game button -->
+   <div id="game" ></div>
+   <div class="game-controls">
+      <button class="myButton" onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
+   </div>
+   <a href=""><button class="myButton">PLAY AGAIN</button></a>
+<script>
+      var myGamePiece;
+      var myObstacles = [];
+      var myScore;
+      
+      function    startGame() {
+          myGamePiece = new component(30, 30, "blue", 10, 120);
+          myGamePiece.gravity = 0.05;
+       myScore = new component("30px", "Consolas", "white", 420, 40, "text");
+          myGameArea.start();
+      }
+      
+      var myGameArea = {
+          canvas : document.createElement("canvas"),
+          start : function() {
+              this.canvas.width = 640;
+              this.canvas.height = 360;
+              this.context = this.canvas.getContext("2d");
+              var myGame = document.getElementById("game");
+              myGame.insertBefore(this.canvas, myGame.childNodes[0]);        
+              this.frameNo = 0;
+              this.interval = setInterval(updateGameArea, 20);
+           },
+          clear : function() {
+              this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+          }
+      }
+      
+      function component(width, height, color, x, y, type) {
+          this.type = type;
+          this.score = 0;
+          this.width = width;
+          this.height = height;
+          this.speedX = 0;
+          this.speedY = 0;    
+          this.x = x;
+          this.y = y;
+          this.gravity = 0;
+          this.gravitySpeed = 0;
+          this.update = function() {
+              ctx = myGameArea.context;
+              if (this.type == "text") {
+                  ctx.font = this.width + " " + this.height;
+                  ctx.fillStyle = color;
+                  ctx.fillText(this.text, this.x, this.y);
+              } else {
+                  ctx.fillStyle = color;
+                  ctx.fillRect(this.x, this.y, this.width, this.height);
+              }
+          }
+          this.newPos = function() {
+              this.gravitySpeed += this.gravity;
+              this.x += this.speedX;
+              this.y += this.speedY + this.gravitySpeed;
+              this.hitBottom();
+          }
+          this.hitBottom = function() {
+              var rockbottom = myGameArea.canvas.height - this.height;
+              if (this.y > rockbottom) {
+                  this.y = rockbottom;
+                  this.gravitySpeed = 0;
+              }
+           }
+          this.crashWith = function(otherobj) {
+              var myleft = this.x;
+              var myright = this.x + (this.width);
+              var mytop = this.y;
+              var mybottom = this.y + (this.height);
+              var otherleft = otherobj.x;
+              var otherright = otherobj.x + (otherobj.width);
+              var othertop = otherobj.y;
+              var otherbottom = otherobj.y + (otherobj.height);
+              var crash = true;
+              if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+                  crash = false;
+              }
+              return crash;
+          }
+      }
+      
+      function updateGameArea() {
+          var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+          for (i = 0; i < myObstacles.length; i += 1) {
+              if (myGamePiece.crashWith(myObstacles[i])) {
+                  return;
+              } 
+          }
+          myGameArea.clear();
+          myGameArea.frameNo += 1;
+          if (myGameArea.frameNo == 1 || everyinterval(150)) {
+              x = myGameArea.canvas.width;
+              minHeight = 20;
+              maxHeight = 200;
+              height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+              minGap = 50;
+              maxGap = 200;
+              gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+              myObstacles.push(new component(20, height, "orange", x, 0));
+              myObstacles.push(new component(20, x - height - gap, "orange", x, height + gap));
+          }
+          for (i = 0; i < myObstacles.length; i += 1) {
+              myObstacles[i].x += -1;
+              myObstacles[i].update();
+          }
+          myScore.text="SCORE: " + myGameArea.frameNo;
+          myScore.update();
+          myGamePiece.newPos();
+          myGamePiece.update();
+      }
+      
+      function everyinterval(n) {
+          if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+          return false;
+      }
+      
+      function accelerate(n) {
+          myGamePiece.gravity = n;
+      }
+      myGamePiece = new component(30, 30, "light-blue", 10, 120);
+
+   </script>
+   <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <a href="https://open.spotify.com/artist/3w53wjoRiLnY7GtEIbp69K"><i class="fa fa-spotify" aria-hidden="true"></i>
+          <p class="maintext">Follow me on Spotify</p></a>
+          <a href="https://www.tumblr.com/parsleyandthymemusic"><i class="fa fa-tumblr" aria-hidden="true"></i>
+          <p class="maintext">Get Updates on my Tumblr</p></a>
+        </div>
+        <div class="col-sm-6">
+          <h3>Sample Portfolio Project</h3>
+          <p>This project was developed as a sample portfolio at Saint Paul College,<br> and was developed entirely by me!
+        </div>
+    </div></div>
+    <p><small>&copy;Copyright Colten Carlson 2025<br>I designed this web page for my Web Fundamentals course at Saint Paul College. This page includes use of Bootstrap columns and Font Awesome icons.</small></p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
